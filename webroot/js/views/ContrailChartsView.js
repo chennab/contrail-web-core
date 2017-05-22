@@ -45,10 +45,12 @@ define([
                         colorScale: d3v4.scaleOrdinal().range(radialColorScheme10), // eslint-disable-line no-undef
                         drawLinks: false,
                         drawRibbons: true,
-                        arcWidth: 10,
+                        arcWidth: 14,
                         arcLabelLetterWidth: 5,
                         showArcLabels: true,
-                        arcLabelXOffset: 25,
+                       // labelFlow: 'perpendicular',
+                        labelFlow: 'along-arc',
+                        arcLabelXOffset: 0,
                         arcLabelYOffset: -5,
                         chartHeight: 500,   //drill-down level 1
                         chartHeight: 600,   //drill-down level 2
@@ -75,7 +77,7 @@ define([
                             }
                         },*/
                         // drillDownLevel: 3,
-                        drillDownLevel: 3,
+                        drillDownLevel: 1,
                         tooltip: 'tooltip-id'
                     }
                 }, {

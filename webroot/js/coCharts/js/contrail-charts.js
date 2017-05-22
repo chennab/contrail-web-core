@@ -12547,7 +12547,11 @@ var RadialDendrogramView = function (_ContrailChartsView) {
         // Estimate arc length and wheather the label will fit (default letter width is assumed to be 5px).
         n.arcLength = 6 * (n.y - _this8.params.arcLabelYOffset) * (n.angleRange[1] - n.angleRange[0]) / 360;
         n.label = '' + n.data.namePath[n.data.namePath.length - 1];
-        n.labelFits = _this8.params.arcLabelLetterWidth * n.label.length < n.arcLength;
+        var widthDiff ;
+        n.labelFits = (widthDiff = (_this8.params.arcLabelLetterWidth * n.label.length - n.arcLength)) < 0;
+        if(!n.labelFits){
+          n.labelTrimLength = (widthDiff / _this8.params.arcLabelLetterWidth + 3);
+        }
         if (_this8.params.labelFlow === 'perpendicular') {
           n.labelFits = n.arcLength > 9 && _this8.params.innerRadius / _this8.params.drillDownLevel - _this8.params.arcLabelYOffset > _this8.params.arcLabelLetterWidth * n.label.length;
         }
@@ -12570,7 +12574,6 @@ var RadialDendrogramView = function (_ContrailChartsView) {
     key: '_render',
     value: function _render() {
       var _this9 = this;
-
       this.d3.attr('transform', 'translate(' + this.params.width / 2 + ', ' + this.params.height / 2 + ')');
       // Circles
       var svgCircles = this.d3.selectAll('.circle').data(this.circles);
@@ -12629,8 +12632,8 @@ var RadialDendrogramView = function (_ContrailChartsView) {
           return '#' + d.data.namePath.join('-');
         });
         var svgArcLabelsEdit = svgArcLabelsEnter.merge(svgArcLabels).transition().ease(this.config.get('ease')).duration(this.params.duration).attr('x', this.params.arcLabelXOffset).attr('dy', this.params.arcLabelYOffset);
-        svgArcLabelsEdit.select('textPath').text(function (d) {
-          return _this9.params.showArcLabels && d.labelFits ? d.label : '';
+        svgArcLabelsEdit.select('textPath').attr('startOffset','24%').text(function (d) {
+          return _this9.params.showArcLabels && d.labelFits ? d.label : (d.label.slice(0,-d.labelTrimLength) + '...');
         });
         svgArcLabels.exit().remove();
         // Perpendicular
