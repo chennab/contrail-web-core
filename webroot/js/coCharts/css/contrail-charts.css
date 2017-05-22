@@ -3808,7 +3808,7 @@
   cursor: pointer; }
 
 .cc-svg .radial-dendrogram .arc-label {
-  text-anchor: start;
+  text-anchor: middle;
   alignment-baseline: middle;
   font-size: 9px;
   fill: #000000; }

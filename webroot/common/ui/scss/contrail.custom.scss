@@ -2316,7 +2316,7 @@ $label_color: #3182bd;
 }
 
 #traffic-groups-radial-chart {
-    width: 800px;
+   width: 800px;
     height: 500px;
     margin: auto;
     .cc-svg {
@@ -2335,7 +2335,7 @@ $label_color: #3182bd;
 //     transform: scale(.9) translate(0px,-240px);
 // }
 .traffic-groups-view #chartBox svg #dendrogram-chart-id {
-    transform: translate(400px, 300px);
+    //transform: translate(400px, 300px);
 }
 
 #traffic-groups-radial-chart #chartBox{
