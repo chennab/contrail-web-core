@@ -2358,8 +2358,11 @@ $label_color: #3182bd;
         margin-right: $traffic-link-info-width;
     }
     .arc-label.along-arc textPath, .cc-title, .iconFontStyle,
-    .iconFontStyle span {
+    .iconFontStyle span, .link-arrow-start textPath, .link-arrow-end textPath {
         font-family: "FontAwesome", Open Sans !important;
+    }
+    .link-arrow-start textPath, .link-arrow-end textPath {
+        fill: #939393;
     }
     .traffic-stats-duration, .clear-traffic-stats, #filterByTagNameSec {
         font-size: 13px;
