@@ -2370,6 +2370,9 @@ $label_color: #3182bd;
     #filterByTagNameSec {
         width: 600px;
         text-align: right;
+        .noFiltersApplied {
+            opacity: .5;
+        }
         .select2-container-multi {
             margin: 3px 5px 0 0;
         }

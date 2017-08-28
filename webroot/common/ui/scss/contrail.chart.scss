@@ -379,13 +379,10 @@ input.ace-input[type=radio] + .ace-lbl.inactive::before {
             fill-opacity: .2;
         }
         .ribbon:hover, .ribbon.active {
-            fill: #ecd76c;
             fill-opacity: .7;
-            stroke:#ecd76c;
-            stroke-width:1;
         }
         .ribbon.active {
-            fill-opacity: .45;
+            fill-opacity: .55;
         }
 		.external.arc, .externalProject.arc {
 			fill: $color_external_arc !important;
