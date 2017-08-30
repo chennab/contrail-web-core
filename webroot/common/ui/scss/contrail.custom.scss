@@ -2371,7 +2371,8 @@ $label_color: #3182bd;
         width: 600px;
         text-align: right;
         .noFiltersApplied {
-            opacity: .5;
+            opacity: .4;
+            color: #898989;
         }
         .select2-container-multi {
             margin: 3px 5px 0 0;
@@ -2448,6 +2449,7 @@ $label_color: #3182bd;
             padding:0 8px;
             i {
                 padding-right: 3px;
+                cursor: default;
             }
         }
     }
@@ -2665,14 +2667,8 @@ button.ui-multiselect {
     height: 25px !important;
 }
 .multiSelectViewWithIcon {
-    .select2-container.select2-container-multi {
-        width: 90%;
-    }
-    .infoIcon {
-        position: relative;
-        display: inline-block;
-        font-size: 18px;
-        vertical-align: middle;
+    label {
+        width: auto;
     }
 }
 $disable-color: #898989;
