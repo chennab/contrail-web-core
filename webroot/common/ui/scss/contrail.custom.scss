@@ -23,7 +23,7 @@ $dashboard-info-label-color:#3183bd;
 $dashboard-alarms-color:#e4564f;
 $dashboard-default-color:#000;
 $traffic-link-info-width:400px;
-$traffic-group-implit-rule: #ff6f00;
+$traffic-group-implit-rule: #feab6c;
 /*
  * Styles moved from vcon-web.css
  * TODO Cleanup required to remove unused styles
@@ -2328,7 +2328,7 @@ div#alarms-event-drops .grid-stack-item-content {
 $label_color: #3182bd;
 #traffic-groups-endpoint-statistics-tabs {
     .grid-header .grid-header-text, .contrail-tab-link {
-        font-family: "FontAwesome", Open Sans !important;
+        font-family: "contrailGlyph", "FontAwesome", Open Sans !important;
     }
     .slick-row-detail .slick-cell {
         width: 100%;
@@ -2359,7 +2359,7 @@ $label_color: #3182bd;
     }
     .arc-label.along-arc textPath, .cc-title, .iconFontStyle,
     .iconFontStyle span, .link-arrow-start textPath, .link-arrow-end textPath {
-        font-family: "FontAwesome", Open Sans !important;
+        font-family: "contrailGlyph", "FontAwesome", Open Sans !important;
     }
     .link-arrow-start textPath, .link-arrow-end textPath {
         fill: #939393;
