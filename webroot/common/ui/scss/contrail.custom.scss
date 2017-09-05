@@ -2444,6 +2444,7 @@ $label_color: #3182bd;
         display: -webkit-flex;
         display: -ms-flex;
         padding-top: 20px;
+        font-size: 12px;
         li {
             list-style: none;
             padding:0 8px;
@@ -2451,6 +2452,28 @@ $label_color: #3182bd;
                 padding-right: 3px;
                 cursor: default;
             }
+            .customIcon {
+                border: 1px solid #ccc;
+                height: 10px;
+                width: 15px;
+                display: inline-block;
+                margin: -1px 5px;
+            }
+            .customIcon.implictRule {
+                border: 1px solid $traffic-group-implit-rule;
+                background: $traffic-group-implit-rule;
+                opacity: 0.6;
+            }
+            .customIcon.external{
+              background-image: repeating-linear-gradient(135deg, #888, #888 0,
+                transparent 1px, transparent 2px, #888 3px);
+              background-size: 4px 4px;
+            }
+        }
+        .seperator {
+            border-left: 1px solid green;
+            margin-left: 15px;
+            padding-left: 20px;
         }
     }
     .trafficGroups_content {
