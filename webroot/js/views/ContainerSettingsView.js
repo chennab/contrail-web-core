@@ -19,7 +19,7 @@ define([
             self.model.__kb.view_model.model().on('change',
                     function(model, newValue) {
                         self.model.saveSettings();
-                        cowu.notifySettingsChange(newValue);
+                        cowu.notifySettingsChange(model.changed, 'updateContainerSettings');
                     }
             );
         }
