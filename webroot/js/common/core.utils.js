@@ -1220,8 +1220,7 @@ define([
         };
         this.notifySettingsChange = function(colorModel, callbackName) {
             var p = layoutHandler.getURLHashObj().p,
-                callback = callbackName ? callbackName
-                                            : 'settingsChanged',
+                callback = callbackName ? callbackName : 'settingsChanged',
             resources =
                 menuHandler.getMenuObjByHash(p).resources.resource;
             for(var i=0; i<resources.length; i++ ) {

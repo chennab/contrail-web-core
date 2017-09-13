@@ -31,22 +31,22 @@ define([
         this.TRAFFIC_GROUP_TAG_TYPES = [{
             'text': 'Application',
             'value': 'app',
-            'showVNonEmpty' : true,
+            'showVNonEmpty' : false,
             'showIcononEmpty': true
         },{
             'text': 'Tier',
             'value': 'tier',
-            'showVNonEmpty' : true,
+            'showVNonEmpty' : false,
             'showIcononEmpty': true
         },{
             'text': 'Deployment',
             'value': 'deployment',
-            'showVNonEmpty' : true,
+            'showVNonEmpty' : false,
             'showIcononEmpty': true
         },{
             'text': 'Site',
             'value': 'site',
-            'showVNonEmpty' : true,
+            'showVNonEmpty' : false,
             'showIcononEmpty': true
         }];
 
