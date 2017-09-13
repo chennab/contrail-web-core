@@ -1062,6 +1062,24 @@
     </div>
 </script>
 
+<script type="text/x-handlebars-template" id="core-optns-with-icons-radio-button-view-template">
+    <div class="form-group" id="radioButtonsWithIcon" data-bind="{{#if viewConfig.visible}} visible: {{viewConfig.visible}} {{/if}}">
+        {{> coreFormLabel}}
+        <div class="btn-group pull-right">
+            {{#each elementConfig.dataObj}}
+                <div class="btn btn-default btn-sm option">
+                    <i class="fa {{this.icon}}"></i>
+                </div>
+                <input type="radio" name="{{../id}}" value="{{value}}" class="{{../class}}"
+                        data-bind="
+                            {{#if ../disabled}}disable: {{../disabled}}, {{/if}} {{#if ../lockAttr}}disable: locks().{{name}}_locked, {{/if}}
+                            checked: {{../dataBindValue}},event: { focusout: function() { validateAttr('{{../path}}', '{{../validation}}') } }" />
+            {{/each}}
+        </div>
+        <span class="help-block red" data-bind="visible: errors().{{name}}_error, text: errors().{{name}}_error"></span>
+    </div>
+</script>
+
 <script type="text/x-handlebars-template" id="core-four-optns-radio-button-view-template">
     <div class="form-group" data-bind="{{#if viewConfig.visible}} visible: {{viewConfig.visible}} {{/if}}">
         {{> coreFormLabel}}
@@ -2500,16 +2518,6 @@
                     <i class="fa fa-cog"></i>
                 </a>
             </div>
-            <div class="widget-toolbar viewchange pull-right">
-                <a class="widget-toolbar-icon chart-stats" title="Chart View">
-                    <i class="fa fa-bar-chart-o"></i>
-                </a>
-            </div>
-            <div class="widget-toolbar viewchange pull-right">
-                <a class="widget-toolbar-icon grid-stats" title="Table View">
-                    <i class="fa fa-table"></i>
-                </a>
-            </div>
             <div class="widget-toolbar pull-right">
                 <span class="traffic-stats-duration">
                    <span id="statsFromOnly">
@@ -2530,6 +2538,7 @@
             </div>
         </div>
     </div>
+    <div id="traffic-groups-options" class="hidden"></div>
     <div id="traffic-groups-grid-view"></div>
     <div id="traffic-groups-radial-chart"></div>
     <div id="traffic-groups-legend-info" class="hidden">
@@ -2538,7 +2547,7 @@
             <li><i class="fa contrailGlyph-deployment-alt"></i>Deployment</li>
             <li><i class="fa contrailGlyph-site-alt"></i>Site</li>
             <li><i class="fa contrailGlyph-tier"></i>Tier</li>
-            <li class="seperator"><span class="customIcon external"></span>External</li>
+            <li class="seperator"><span class="customIcon external"></span>Other Project / External</li>
             <li><span class="customIcon implictRule"></span>Implicit Deny / Allow</li>
         </ul>
     </div>
@@ -2769,7 +2778,7 @@
 </script>
 <script type="text/x-handlebars-template" id="toolbar-settings">
     <div class="btn-toolbar btn-toolbar-primary" id="toolbar_settings">
-        <a href="#"><i class="fa contrailGlyph-menu"></i></a>
+        <a href="#"><i class="fa {{this.icon}}"></i></a>
     </div>
 </script>
 
