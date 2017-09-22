@@ -2548,58 +2548,60 @@
 </script>
 
 <script type="text/x-handlebars-template" id="traffic-groups-template">
-    <div class="widget-box transparent">
-        <div class="widget-header">
-            <h4 class="smaller">{{widgetTitle}}</h4>
-            <div class="widget-toolbar pull-right">
-                <a class="widget-toolbar-icon refresh-traffic-stats" title="Refresh" data-action="refresh">
-                    <i class="fa fa-repeat"></i>
-                </a>
-            </div>
-            <div class="widget-toolbar pull-right">
-                <a class="widget-toolbar-icon settings-traffic-stats" title="Settings" data-action="settings">
-                    <i class="fa fa-cog"></i>
-                </a>
-            </div>
-            <div class="widget-toolbar pull-right">
-                <span class="traffic-stats-duration">
-                   <span id="statsFromOnly">
-                        <i>Stats for <span class="statsFromTime"></span></i>
-                   </span>
-                   <span id="statsFromTo" class="hidden">
-                        <i>Stats from <span class="statsFromTime"></span>
-                        to <span class="statsToTime"></span></i>
+    <div class="traffic-groups-view">
+        <div class="widget-box transparent">
+            <div class="widget-header">
+                <h4 class="smaller">{{widgetTitle}}</h4>
+                <div class="widget-toolbar pull-right">
+                    <a class="widget-toolbar-icon refresh-traffic-stats" title="Refresh" data-action="refresh">
+                        <i class="fa fa-repeat"></i>
+                    </a>
+                </div>
+                <div class="widget-toolbar pull-right">
+                    <a class="widget-toolbar-icon settings-traffic-stats" title="Settings" data-action="settings">
+                        <i class="fa fa-cog"></i>
+                    </a>
+                </div>
+                <div class="widget-toolbar pull-right">
+                    <span class="traffic-stats-duration">
+                       <span id="statsFromOnly">
+                            <i>Stats for <span class="statsFromTime"></span></i>
+                       </span>
+                       <span id="statsFromTo" class="hidden">
+                            <i>Stats from <span class="statsFromTime"></span>
+                            to <span class="statsToTime"></span></i>
+                        </span>
                     </span>
-                </span>
-            </div>
-            <div class="widget-toolbar pull-right" id="filterByTagNameSec">
-                <a data-toggle="dropdown" class="dropdown-toggle noFiltersApplied" title="Clear Filter">
-                    <i class="fa fa-filter"></i>
-                </a>
-                <div class="pull-right dropdown-menu dropdown-caret dropdown-closer">
+                </div>
+                <div class="widget-toolbar pull-right" id="filterByTagNameSec">
+                    <a data-toggle="dropdown" class="dropdown-toggle noFiltersApplied" title="Clear Filter">
+                        <i class="fa fa-filter"></i>
+                    </a>
+                    <div class="pull-right dropdown-menu dropdown-caret dropdown-closer">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div id="traffic-groups-options" class="hidden"></div>
-    <div id="traffic-groups-grid-view"></div>
-    <div id="traffic-groups-radial-chart"></div>
-    <div id="traffic-groups-legend-info" class="row col-xs-12 hidden">
-        <div class="col-xs-6">
-        <ul class="trafficGroupsTagIcons">
-            <li><i class="fa contrailGlyph-application-alt"></i>Application</li>
-            <li><i class="fa contrailGlyph-deployment-alt"></i>Deployment</li>
-            <li><i class="fa contrailGlyph-site-alt"></i>Site</li>
-            <li><i class="fa contrailGlyph-tier"></i>Tier</li>
-        </ul>
-        <ul class="tgChartLegend">
-            <li><span class="customIcon external"></span>Other Project / External</li>
-            <li><span class="customIcon implictRule"></span>Implicit Deny / Allow</li>
-        </ul>
+        <div id="traffic-groups-options" class="hidden"></div>
+        <div id="traffic-groups-grid-view"></div>
+        <div id="traffic-groups-radial-chart"></div>
+        <div id="traffic-groups-legend-info" class="row col-xs-12 hidden">
+            <div class="col-xs-6">
+            <ul class="trafficGroupsTagIcons">
+                <li><i class="fa contrailGlyph-application-alt"></i>Application</li>
+                <li><i class="fa contrailGlyph-deployment-alt"></i>Deployment</li>
+                <li><i class="fa contrailGlyph-site-alt"></i>Site</li>
+                <li><i class="fa contrailGlyph-tier"></i>Tier</li>
+            </ul>
+            <ul class="tgChartLegend">
+                <li><span class="customIcon external"></span>Other Project / External</li>
+                <li><span class="customIcon implictRule"></span>Implicit Deny / Allow</li>
+            </ul>
+            </div>
+            <div class="col-xs-4 tgCirclesLegend"></div>
         </div>
-        <div class="col-xs-4 tgCirclesLegend"></div>
+        <div id="traffic-groups-link-info"></div>
     </div>
-    <div id="traffic-groups-link-info"></div>
 </script>
 
 <script type="text/x-handlebars-template" id="traffic-chart-legend-template">
