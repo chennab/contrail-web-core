@@ -47,6 +47,19 @@
             </div>
         </div>
 </script>
+<script type="text/x-handlebars-template" id="breadcrumb-template">
+     <ul id={{breadcrumbId}} class="breadcrumb">
+        {{#each items}}
+        <li>
+          <a href="#">
+            {{#each this}}
+            <div class="iconFontStyle">{{this}}</div>
+            {{/each}}
+          </a>
+        </li>
+        {{/each}}
+     </ul>
+</script>
 <script type="text/x-handlebars-template" id="iframe-template">
     <iframe class="iframe-view" src={{this.url}}></iframe>
 </script>
