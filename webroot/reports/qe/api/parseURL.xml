@@ -26,7 +26,7 @@
         <callback>qeapi.runPOSTQuery</callback>
     </item>
     <item>
-        <url>/api/qe/analytics/query</url>
+        <url>/api/analytics/query</url>
         <method>post</method>
         <timeout>600</timeout>
         <feature>query-engine</feature>

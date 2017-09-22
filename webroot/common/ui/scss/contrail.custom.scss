@@ -2377,6 +2377,14 @@ $label_color: #3182bd;
     #filterByTagNameSec {
         width: 600px;
         text-align: right;
+        sup.filterCount {
+            background-color: #6FB3E0;
+            color: #fff;
+            padding: 1px 3px;
+            position: relative;
+            left: -2px;
+            top: -9px;
+        }
         .noFiltersApplied {
             opacity: .4;
             color: #898989;
