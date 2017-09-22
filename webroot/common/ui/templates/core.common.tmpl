@@ -48,7 +48,7 @@
         </div>
 </script>
 <script type="text/x-handlebars-template" id="breadcrumb-template">
-     <ul id={{breadcrumbId}} class="breadcrumb">
+     <ul id={{breadcrumbId}} class="breadcrumb margin-0-0-10">
         {{#each items}}
         <li>
           <a href="#">
@@ -2584,17 +2584,37 @@
     <div id="traffic-groups-options" class="hidden"></div>
     <div id="traffic-groups-grid-view"></div>
     <div id="traffic-groups-radial-chart"></div>
-    <div id="traffic-groups-legend-info" class="hidden">
+    <div id="traffic-groups-legend-info" class="row col-xs-12 hidden">
+        <div class="col-xs-6">
         <ul class="trafficGroupsTagIcons">
             <li><i class="fa contrailGlyph-application-alt"></i>Application</li>
             <li><i class="fa contrailGlyph-deployment-alt"></i>Deployment</li>
             <li><i class="fa contrailGlyph-site-alt"></i>Site</li>
             <li><i class="fa contrailGlyph-tier"></i>Tier</li>
-            <li class="seperator"><span class="customIcon external"></span>Other Project / External</li>
+        </ul>
+        <ul class="tgChartLegend">
+            <li><span class="customIcon external"></span>Other Project / External</li>
             <li><span class="customIcon implictRule"></span>Implicit Deny / Allow</li>
         </ul>
+        </div>
+        <div class="col-xs-4 tgCirclesLegend"></div>
     </div>
     <div id="traffic-groups-link-info"></div>
+</script>
+
+<script type="text/x-handlebars-template" id="traffic-chart-legend-template">
+   <div class="col-xs-6">
+        <div class="circleName">Outer Circle</div>
+        {{#each this.outerTags}}
+        <div>{{this}}</div>
+        {{/each}}
+    </div>
+    <div class="col-xs-6">
+        <div class="circleName">Inner Circle</div>
+        {{#each this.innerTags}}
+        <div>{{this}}</div>
+        {{/each}}
+    </div>
 </script>
 
 <script type="text/x-handlebars-template" id="traffic-filter-view-template">
@@ -2645,6 +2665,7 @@
                 <span class="allSessionInfo pull-right" title="Endpoint Stats"><i class="fa fa-table"></i></span>
                 </h1>
                 <ul class="policyRules">
+                   {{#IfCompare this.policyRules.length 0 operator='!='}}
                    {{#each this.policyRules}}
                     <li>
                         <h2>Policy: <span class="{{this.implicitRule}}">{{this.policy_name}}</span></h2>
@@ -2718,6 +2739,13 @@
                         </div>
                     </li>
                     {{/each}}
+                    {{else}}
+                    <div class="row col-xs-12 padding-bottom-5">
+                        <dl>
+                            <dt>Rule: {{this.rules}}</dt>
+                        </dl>
+                    </div>
+                    {{/IfCompare}}
                 </ul>
             </div>
         </section>

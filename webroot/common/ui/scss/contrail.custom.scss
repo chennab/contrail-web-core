@@ -2445,42 +2445,46 @@ $label_color: #3182bd;
             padding: 0;
         }
     }
-    //#traffic-groups-radial-chart{transition: all 700ms;}
-    .trafficGroupsTagIcons {
-        display: flex;
-        display: -webkit-flex;
-        display: -ms-flex;
-        padding-top: 20px;
-        font-size: 12px;
-        li {
-            list-style: none;
-            padding:0 8px;
-            i {
-                padding-right: 3px;
-                cursor: default;
-            }
-            .customIcon {
-                border: 1px solid #ccc;
-                height: 10px;
-                width: 15px;
-                display: inline-block;
-                margin: -1px 5px;
-            }
-            .customIcon.implictRule {
-                border: 1px solid $traffic-group-implit-rule;
-                background: $traffic-group-implit-rule;
-                opacity: 0.6;
-            }
-            .customIcon.external{
-              background-image: repeating-linear-gradient(135deg, #888, #888 0,
-                transparent 1px, transparent 2px, #888 3px);
-              background-size: 4px 4px;
+    #traffic-groups-legend-info {
+        padding: 0 $traffic-link-info-width 0 0;
+        ul {
+            display: flex;
+            display: -webkit-flex;
+            display: -ms-flex;
+            font-size: 12px;
+            li {
+                list-style: none;
+                padding:0 8px;
+                i {
+                    padding-right: 3px;
+                    cursor: default;
+                }
+                .customIcon {
+                    border: 1px solid #ccc;
+                    height: 10px;
+                    width: 15px;
+                    display: inline-block;
+                    margin: -1px 5px;
+                }
+                .customIcon.implictRule {
+                    border: 1px solid $traffic-group-implit-rule;
+                    background: $traffic-group-implit-rule;
+                    opacity: 0.6;
+                }
+                .customIcon.external{
+                  background-image: repeating-linear-gradient(135deg, #888, #888 0,
+                    transparent 1px, transparent 2px, #888 3px);
+                  background-size: 4px 4px;
+                }
             }
         }
-        .seperator {
-            border-left: 1px solid green;
-            margin-left: 15px;
-            padding-left: 20px;
+        .tgCirclesLegend {
+            border: 1px solid #898989;
+            padding: 10px 5px;
+            .circleName {
+                color: #3182bd;
+                padding-bottom: 5px;
+            }
         }
     }
     #traffic-groups-link-info {
