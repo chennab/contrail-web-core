@@ -223,6 +223,14 @@ cp -af ./$THIRD_PARTY/datetimepicker-v2.4.5/jquery.datetimepicker.js webroot/ass
 cp -af ./$THIRD_PARTY/datetimepicker-v2.4.5/jquery.datetimepicker.css webroot/assets/datetimepicker/styles/jquery.datetimepicker.css
 #End - Cooy Datetimepicker from $THIRD_PARTY
 
+#Start - Cooy Daterangepicker from $THIRD_PARTY
+rm -rf webroot/assets/daterangepicker
+mkdir -p webroot/assets/daterangepicker/js
+mkdir -p webroot/assets/daterangepicker/styles
+cp -af ./$THIRD_PARTY/bootstrap-daterangepicker-v2.1.27/daterangepicker.js webroot/assets/daterangepicker/js/daterangepicker.js
+cp -af ./$THIRD_PARTY/bootstrap-daterangepicker-v2.1.27/daterangepicker.css webroot/assets/daterangepicker/styles/daterangepicker.css
+#End - Cooy Daterangepicker from $THIRD_PARTY
+
 #Start - Copy Knockout from $THIRD_PARTY
 rm -rf webroot/assets/knockout
 mkdir webroot/assets/knockout

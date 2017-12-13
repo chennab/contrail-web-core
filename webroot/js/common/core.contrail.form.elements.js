@@ -198,6 +198,90 @@ define([
         });
         return self;
     };
+    $.fn.contrailDateRangePicker = function(option) {
+        var selectedRange = getDateRangeObj($(this).val()),
+            self = this,
+            defaultOption = {
+                timePicker: true,
+                timePickerIncrement: 10,
+                format: 'MMM DD, YYYY hh:mm A',
+                displayFormat: 'MMM DD, hh:mm A',
+                drops: 'up',
+                autoUpdateInput: false,
+                locale: {
+                  format: 'MMM DD, YYYY hh:mm A'
+                },
+                maxDate: moment(),
+                alwaysShowCalendars: true,
+                showCustomRangeLabel: false,
+                ranges: cowc.TIME_RANGES
+            };
+        if(selectedRange) {
+            var selectedDate = cowc.TIME_RANGES[selectedRange.text];
+            defaultOption.startDate = selectedDate[0];
+            defaultOption.endDate = selectedDate[1];
+        }
+        option = (typeof option === "undefined") ? {} : option;
+
+        option = $.extend(true, defaultOption, option);
+
+        this.daterangepicker(option, function(start, end) {
+            var value = selectedRange ? selectedRange.text : $(self).val(),
+                displayEleId = $(self).attr('id') + '_display';
+            $('#'+displayEleId).val(formatDateRange(value, option.displayFormat));
+        }());
+
+        function getDateRangeObj(dateRange) {
+            var dateRangeObj = _.find(cowc.TIMERANGE_DROPDOWN_VALUES_WO_CUSTOM,
+                function(obj) {
+                    return obj.id == dateRange;
+            });
+            return dateRangeObj;
+        }
+
+        function formatDateRange(range, format) {
+            if(range && range.indexOf && range.indexOf('-') > -1) {
+                range = range.split('-');
+                range = moment(range[0]).format(format) + ' - ' +
+                        moment(range[1]).format(format);
+            }
+            return range;
+        }
+
+        this.on('show.daterangepicker', function(ev, picker) {
+            var selectedRange = getDateRangeObj($(ev.currentTarget).val());
+            if(selectedRange) {
+                var selectedDate = cowc.TIME_RANGES[selectedRange.text];
+                picker.chosenLabel = selectedRange.text;
+                $('.daterangepicker ul li[data-range-key="'+selectedRange.text+'"]')
+                                    .addClass('active');
+                self.data('daterangepicker').setStartDate(selectedDate[0]);
+                self.data('daterangepicker').setEndDate(selectedDate[1]);
+            }
+        });
+
+        self.data('contrailDateRangePicker', {
+            option: option,
+            value: function(dateRange, displayVal) {
+                if(!contrail.checkIfExist(dateRange)) {
+                    return self.val();
+                } else {
+                    if(dateRange == displayVal) {
+                        displayVal = formatDateRange(dateRange, option.displayFormat);
+                    }
+                    dateRange = formatDateRange(dateRange, option.format);
+                    self.val(dateRange);
+                    var displayEleId = $(self).attr('id') + '_display';
+                    $('#'+displayEleId).val(displayVal);
+                    return dateRange;
+                }
+            },
+            destroy: function() {
+                self.daterangepicker('destroy')
+            }
+        });
+        return self;
+    };
 
     $.fn.contrailDropdown = function(defaultOption, args) {
         var self = this;

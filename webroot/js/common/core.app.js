@@ -214,7 +214,8 @@ function getCoreAppPaths(coreBaseDir, coreBuildDir, env) {
             'global-controller-viewconfig': 'empty:',
             'security-dashboard-viewconfig': 'empty:',
             'core-alarm-utils'            :  coreWebDir + '/js/common/core.alarms.utils',
-            'alarms-viewconfig'           : coreWebDir + '/js/views/alarms/alarms.viewconfig'
+            'alarms-viewconfig'           : coreWebDir + '/js/views/alarms/alarms.viewconfig',
+            'daterangepicker'             : coreWebDir + "/assets/daterangepicker/js/daterangepicker"
         };
         //Merge common (for both prod & dev) alias
         for(var currAlias in devAliasMap)
@@ -353,6 +354,9 @@ var coreAppShim =  {
     },
     'd3-utils': {
         deps: ['d3']
+    },
+    'daterangepicker': {
+        deps: ['jquery', 'bootstrap', 'moment']
     },
     'select2-utils': {
         deps: ['jquery']
@@ -897,6 +901,58 @@ function initCustomKOBindings(Knockout) {
                 }
                 else {
                     dateTimePicker.value('');
+                }
+            }
+        };
+
+        Knockout.bindingHandlers.contrailDateRangePicker = {
+            init: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
+                var valueObj = Knockout.toJS(valueAccessor()) || {},
+                    allBindings = allBindingsAccessor(),
+                    elementConfig = {};
+
+                if(contrail.checkIfExist(bindingContext) && contrail.checkIfExist(bindingContext.$root)){
+                    var elementConfigMap = bindingContext.$root.elementConfigMap(),
+                    elementName = $(element).attr("name");
+
+                    elementConfig = elementConfigMap[elementName];
+                }
+
+                var dateRangePicker = $(element).contrailDateRangePicker(elementConfig).data('contrailDateRangePicker');
+
+                $(element).on('apply.daterangepicker', function(ev, picker) {
+                    var key = picker.chosenLabel,
+                        timeRangeObj = _.find(cowc.TIMERANGE_DROPDOWN_VALUES_WO_CUSTOM,
+                            function(obj) {
+                                return obj.text == key;
+                        });
+                    if(timeRangeObj) {
+                        var dateRange = timeRangeObj['id'];
+                    } else {
+                        var dateRange = picker.startDate._d + ' - '
+                                        + picker.endDate._d;
+                        key = dateRange;
+                    }
+                    var value = dateRangePicker.value(dateRange, key);
+                    viewModel.model().set($(element).attr("name"), value);
+                });
+
+                Knockout.utils.domNodeDisposal.addDisposeCallback(element, function () {
+                    dateRangePicker.destroy();
+                });
+            },
+            update: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
+                var dateRangePicker = $(element).data('contrailDateRangePicker');
+
+                if (allBindingsAccessor.get('value')) {
+                    var valueBindingAccessor = allBindingsAccessor.get('value'),
+                        value = Knockout.utils.unwrapObservable(valueBindingAccessor);
+
+                    value = contrail.checkIfFunction(value) ? value() : value;
+                    dateRangePicker.value(value);
+                }
+                else {
+                    dateRangePicker.value('');
                 }
             }
         };

@@ -2936,6 +2936,19 @@ footer#footer-container * {
     bottom: 35px;
 }
 
+.dateRangePickerDisplay {
+    position: relative;
+    .displayEle {
+        margin-top: -28px;
+        pointer-events: none;
+    }
+    .calendarIcon {
+        position: absolute;
+        top: 7px;
+        pointer-events: none;
+        right: 5px;
+    }
+}
 
 /*Load Balancer starts here*/
 #loadbalancer_load_balancers {

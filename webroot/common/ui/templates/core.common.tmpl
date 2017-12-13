@@ -1423,6 +1423,22 @@
     </div>
 </script>
 
+<script type="text/x-handlebars-template" id="core-daterangepicker-view-template">
+    <div class="form-group" data-bind="{{#if viewConfig.visible}} visible: {{viewConfig.visible}} {{/if}}">
+        {{> coreFormLabel}}
+        <input id="{{id}}" name="{{name}}" class="{{class}}" type="text" data-bind="
+        {{#if disabled}}disable: {{disabled}},
+        {{/if}}{{#if lockAttr}}disable: locks().{{name}}_locked, {{/if}}value: {{dataBindValue}},
+        event: { focusout: function() { validateAttr('{{viewConfig.path}}', '{{validation}}') } },
+        contrailDateRangePicker: {}"/>
+        <span class="help-block red" data-bind="visible: errors().{{name}}_error, text: errors().{{name}}_error"></span>
+        <div class="dateRangePickerDisplay">
+            <input id="{{id}}_display" name="{{name}}_display" class="{{class}} displayEle" type="text"/>
+            <i class="fa fa-calendar calendarIcon"></i>
+        </div>
+    </div>
+</script>
+
 <script type="text/x-handlebars-template" id="core-numerictextbox-view-template">
     <div class="form-group" data-bind="{{#if viewConfig.visible}} visible: {{viewConfig.visible}} {{/if}}">
         {{> coreFormLabel}}

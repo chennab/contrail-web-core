@@ -19,6 +19,7 @@ define([
         'jquery.panzoom',
         'jquery.event.drag',
         'jquery.datetimepicker',
+        'daterangepicker',
         'slick.grid',
         'slick.checkboxselectcolumn',
         'slick.groupmetadata',

@@ -3,8 +3,8 @@
  */
 
 define([
-    'underscore'
-], function (_) {
+    'underscore', 'moment'
+], function (_, moment) {
     var CoreConstants = function () {
         var self = this;
 
@@ -67,6 +67,14 @@ define([
                 name: 'Not Evaluated',
                 uuid: '00000000-0000-0000-0000-000000000000'
             }
+        };
+
+        this.TIME_RANGES = {
+           'Last 10 Mins': [moment().subtract(10, 'minutes'), moment()],
+           'Last 30 Mins': [moment().subtract(30, 'minutes'), moment()],
+           'Last 1 Hr': [moment().subtract(60, 'minutes'), moment()],
+           'Last 6 Hrs': [moment().subtract(360, 'minutes'), moment()],
+           'Last 12 Hrs': [moment().subtract(720, 'minutes'), moment()]
         };
 
         this.SEV_LEVELS = {
@@ -160,6 +168,7 @@ define([
         this.TMPL_TEXTAREA_VIEW = "core-textarea-view-template";
         this.TMPL_EDITABLE_GRID_TEXTAREA_VIEW = "core-editable-grid-textarea-view-template";
         this.TMPL_DATETIMEPICKER_VIEW = "core-datetimepicker-view-template";
+        this.TMPL_DATERANGEPICKER_VIEW = "core-daterangepicker-view-template";
         this.TMPL_NUMERICTEXTBOX_VIEW = "core-numerictextbox-view-template";
         this.TMPL_AUTOCOMPLETETEXTBOX_VIEW = "core-autocompletetextbox-view-template";
         this.TMPL_BUTTON_VIEW = "core-button-view-template";
