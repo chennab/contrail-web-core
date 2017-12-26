@@ -2391,7 +2391,7 @@ $label_color: #3182bd;
     }
     .arc-label.along-arc textPath, .cc-title span, .iconFontStyle,
     .iconFontStyle span, .link-arrow-start textPath, .link-arrow-end textPath,
-    .arc-label.along-arc .icon-style {
+    .arc-label.along-arc .icon-style, #remote_endpoints {
         font-family: "FontAwesome", "contrailGlyph", Open Sans !important;
     }
     .link-arrow-start textPath, .link-arrow-end textPath {
@@ -2558,8 +2558,7 @@ $label_color: #3182bd;
                 border-radius:2px;
                 display:inline-block;
                 color:#787878;
-                margin-left:-10px;
-                margin-right: 24px;
+                margin: 0 24px 10px -10px;
                 font-size: 14px;
             }
             h1{
@@ -2580,6 +2579,7 @@ $label_color: #3182bd;
                 font-weight:600;
                 margin:0px;
                 line-height:1;
+                color: #393939;
             }
             h6 {
                 padding: 5px 0px 5px 15px;
@@ -2591,33 +2591,37 @@ $label_color: #3182bd;
                 margin: 0px;
                 }
             }
-            ul{
-                padding:15px 0px;
-                margin:0px;
-                border-top:#e5e5e5 solid 1px;
-            }
-            li{
-                list-style:none;
-                border-bottom:#e5e5e5 solid 1px;
-                padding-bottom: 15px;
-                margin-bottom:15px;
-            }
-            ul.policyRules, .vmiDetails {
-                dt, dd {
-                    font-weight: 600;
-                }
-                dd {
+            .traffic-rules {
+                ul{
+                    padding:15px 0px;
                     margin:0px;
-                    -webkit-margin-start: 0px;
                 }
-                dl {
-                    display:inline-block;
-                    margin:0px;
-                    font-size:11px;
-                    color: #787878;
+                li{
+                    list-style:none;
+                    border-bottom:#e5e5e5 solid 1px;
+                    padding-bottom: 15px;
+                    margin-bottom:15px;
                 }
-                .font-bold {
-                    font-weight: bold;
+                ul.policyRules, .vmiDetails {
+                    dt, dd {
+                        font-weight: 600;
+                    }
+                    dd {
+                        margin:0px;
+                        -webkit-margin-start: 0px;
+                    }
+                    dl {
+                        display:inline-block;
+                        margin:0px;
+                        font-size:11px;
+                        color: #787878;
+                    }
+                    .font-bold {
+                        font-weight: bold;
+                    }
+                }
+                .policyName {
+                    color: #3182bd;
                 }
             }
         }
